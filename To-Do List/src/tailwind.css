@@ -1,0 +1,5 @@
+/* Add the Tailwind directives to your CSS and import in main.jsx  */
+/* import "./tailwind.css" */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
