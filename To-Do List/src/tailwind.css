@@ -1,5 +1,8 @@
 /* Add the Tailwind directives to your CSS and import in main.jsx  */
 /* import "./tailwind.css" */
+
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
