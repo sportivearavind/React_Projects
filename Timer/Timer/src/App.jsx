@@ -5,25 +5,24 @@ export default function App() {
   const [minutes, setMinutes] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {
-      if (seconds >= 0 && seconds <= 60) {
-        setSeconds(seconds++);
-      } else {
-        setMinutes(minutes++);
-        setSeconds(0);
-      }
+    const timer = setTimeout(() => {
+      setSeconds((prevSeconds) => {
+        if (prevSeconds < 59) {
+          return prevSeconds + 1;
+        } else {
+          setMinutes((prevMinutes) => prevMinutes + 1);
+          return 0;
+        }
+      });
+    }, 1000); // 1 second delay
 
-      if (minutes > 59) {
-        setSeconds(0);
-        setMinutes(0);
-      }
-    }, 1000);
-  }, [seconds]);
+    return () => clearTimeout(timer); // Cleanup the timeout
+  }, [seconds, minutes]);
 
   return (
     <div className="App">
       <h1>
-        {seconds}:{minutes}
+        {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </h1>
     </div>
   );
