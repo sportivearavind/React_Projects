@@ -10,7 +10,13 @@ export default function App() {
         if (prevSeconds < 59) {
           return prevSeconds + 1;
         } else {
-          setMinutes((prevMinutes) => prevMinutes + 1);
+          setMinutes((prevMinutes) => {
+            if(prevMinutes >= 59){
+              return 0;
+            }
+            
+            return prevMinutes+1;
+          });
           return 0;
         }
       });
